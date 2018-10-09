@@ -33,13 +33,11 @@ class Stack {
 
   pop() {
 
-    if(this.top && this.length > 1) {
+    if(this.top) {
+      let itemToPop = this.top;
       this.top = this.top.next;
       this.length--;
-    }
-    else if (this.top && length === 1) {
-      this.top = null;
-      this.length--;
+      return itemToPop.value;
     }
     else {
       throw "Stack is empty";
@@ -67,6 +65,5 @@ class Stack {
 const stack = new Stack();
 stack.push("one");
 stack.push("two");
-console.log(stack.peek());
-stack.pop();
+console.log(stack.pop());
 console.log(stack.freeSize());
