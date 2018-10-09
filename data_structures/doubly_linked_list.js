@@ -18,8 +18,8 @@ class DoublyLinkedList {
     const node = new Node(value);
 
     if (this.length) {
-      tail.next = node;
-      node.previous = this.tail;
+      this.tail.next = node;
+      node.pre = this.tail;
       this.tail = node;
     } else {
       this.head = node;
@@ -47,7 +47,7 @@ class DoublyLinkedList {
         this.head.pre = null;
       }
     }
-    if(position === this.length) {
+     else if(position === this.length) {
       this.tail = this.tail.pre;
       this.tail.next = null;
     } else {
@@ -85,4 +85,24 @@ class DoublyLinkedList {
     return currentNode;
   }
 
+  find(val) {
+    const thisNode = this.head;
+
+    while(thisNode) {
+      if (thisNode.value === val) {
+        return thisNode;
+      }
+      thisNode = thisNode.next;
+    }
+    return undefined;
+  }
+
 }
+
+let list = new DoublyLinkedList();
+list.add("one");
+list.add("two");
+let result = list.find("one");
+console.log(result);
+list.remove(1);
+console.log(list.find("two"));
