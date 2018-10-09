@@ -21,19 +21,20 @@ class LinkedList {
   }
 
   add(value) {
-    const currentNode = head.next;
+    let node = new Node(value),
+        currentNode = this.head;
+ 
     if (!currentNode) {
-      this.addToHead(value);
-      return this;
+        this.head = node;
+        this.length++;
+        return node;
     }
-    
-    const node = new Node(value);
     while(currentNode.next) {
       currentNode = currentNode.next;
     }
     currentNode.next = node;
     this.length++;
-    return this;
+    return node;
   }
 
 
@@ -48,7 +49,7 @@ class LinkedList {
   }
 
   find(val) {
-    const thisNode = this.head;
+    let thisNode = this.head;
 
     while(thisNode) {
       if (thisNode.value === val) {
@@ -85,3 +86,10 @@ class LinkedList {
 
 }
 
+let list = new LinkedList();
+list.add("one");
+list.add("two");
+let result = list.find("one");
+console.log(result);
+list.remove("one");
+console.log(list.find("two"));
