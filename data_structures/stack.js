@@ -46,7 +46,7 @@ class Stack {
 
   peek() {
     if (this.top) {
-      return this.top;
+      return this.top.value;
     } else {
       throw "Stack is empty";
     }
